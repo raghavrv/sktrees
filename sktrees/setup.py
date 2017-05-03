@@ -14,11 +14,7 @@ def configuration(parent_package='', top_path=None):
 
     config = Configuration('sktrees', parent_package, top_path)
 
-    config.add_subpackage('ensemble')
-    config.add_subpackage('tree')
-
-    # add the test directory
-    config.add_subpackage('tests')
+    config.add_subpackage('fast_tree')
 
     return config
 
