@@ -1,5 +1,7 @@
 import os
-from distutils.core import setup
+
+from setuptools import setup
+from setuptools import find_packages
 
 # The version will be the same as the scikit-learn version on which this can
 # be patched
@@ -19,16 +21,6 @@ def configuration(parent_package='', top_path=None):
 
 
 def setup_package():
-    metadata = dict(name='sktrees',
-                    maintainer='Raghav RV',
-                    maintainer_email='rvraghav93@gmail.com',
-                    description=("Unofficial bleeding edge updates to sklearn"
-                                 "'s tree models"),
-                    license="new BSD",
-                    url="https://sktrees.github.io",
-                    version=VERSION,
-                    long_description=open('README.md').read())
-
     sklearn_matches = False
 
     try:
@@ -36,19 +28,25 @@ def setup_package():
     except ImportError:
         pass
     else:
-        if sklearn.__version__ >= '0.19.dev0':
+        if sklearn.__version__ == '0.19.dev0':
             sklearn_matches = True
 
     if not sklearn_matches:
         raise ImportError("This sktrees version will patch only onto "
-                          "sklearn>=0.19.dev0")
+                          "sklearn==0.19.dev0")
 
-    from numpy.distutils.core import setup
-
-    metadata['configuration'] = configuration
-
-    setup(**metadata)
-
+    setup(name='sktrees',
+          maintainer='Raghav RV',
+          maintainer_email='rvraghav93@gmail.com',
+          description="Unofficial bleeding edge updates to sklearn's tree models",
+          packages=find_packages(),
+          license="new BSD",
+          url="https://sktrees.github.io",
+          version=VERSION,
+          long_description=open('README.md').read(),
+          install_requires=["scikit-learn==0.19.dev0"],
+          configuration=configuration
+          )
 
 if __name__ == "__main__":
     setup_package()
