@@ -1,0 +1,8 @@
+include *.rst
+recursive-include doc *
+recursive-include examples *
+recursive-include sktrees *.c *.h *.pyx *.pxd *.pxi
+include COPYING
+include AUTHORS.rst
+include README.rst
+
