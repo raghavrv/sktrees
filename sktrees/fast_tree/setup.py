@@ -15,14 +15,14 @@ def configuration(parent_package="", top_path=None):
                          libraries=libraries,
                          extra_compile_args=["-Ofast", "-std=c++11"])
 
-    config.add_extension("_criterion",
-                         sources=["_criterion.pyx"],
+    config.add_extension("_data_structures",
+                         sources=["_data_structures.pyx"],
                          include_dirs=[numpy.get_include()],
                          libraries=libraries,
                          extra_compile_args=["-O3", "-std=c++11"])
 
-    config.add_extension("_split_record",
-                         sources=["_split_record.pyx"],
+    config.add_extension("_criterion",
+                         sources=["_criterion.pyx"],
                          include_dirs=[numpy.get_include()],
                          libraries=libraries,
                          extra_compile_args=["-O3", "-std=c++11"])
